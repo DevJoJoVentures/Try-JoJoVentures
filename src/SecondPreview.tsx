@@ -116,16 +116,14 @@ function SecondPreview() {
                     onMouseEnter={() => setHoveredWireframe(1)}
                     onMouseLeave={() => setHoveredWireframe(null)}
                   >
-                    <button className="relative w-48 h-48 border-4 border-white rounded-lg overflow-hidden hover:border-[#ffdab8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:ring-offset-2 focus:ring-offset-black mb-4">
-                      <video 
-                        autoPlay 
-                        loop 
-                        muted 
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover"
-                      >
-                        <source src="https://ugricruidisirwkjayzw.supabase.co/storage/v1/object/sign/JoJo%20Ventures%20-%20Website/Professional_Mode_The_giant_curtain_opens_up__reve.mp4?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJKb0pvIFZlbnR1cmVzIC0gV2Vic2l0ZS9Qcm9mZXNzaW9uYWxfTW9kZV9UaGVfZ2lhbnRfY3VydGFpbl9vcGVuc191cF9fcmV2ZS5tcDQiLCJpYXQiOjE3NDE3NDUwMjAsImV4cCI6MTc3MzI4MTAyMH0.mhoGbF5wkYaarx0zoltnQqsZz5350dEh-yyznYet9S8" type="video/mp4" />
-                      </video>
+                    <button className="relative w-48 h-48 border-4 border-white rounded-lg overflow-hidden hover:border-[#ffdab8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:ring-offset-2 focus:ring-offset-black mb-4 bg-white">
+                      <div className="w-full h-full p-4 flex items-center justify-center">
+                        <img 
+                          src="https://ugricruidisirwkjayzw.supabase.co/storage/v1/object/sign/JoJo%20Ventures%20-%20Website/jojoventureszebra.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJKb0pvIFZlbnR1cmVzIC0gV2Vic2l0ZS9qb2pvdmVudHVyZXN6ZWJyYS5qcGVnIiwiaWF0IjoxNzQyMTk3NjM3LCJleHAiOjE3NzM3MzM2Mzd9._IjP2EVpPODBjuRcN5OvM9r-D9Bx9ocKKtuWCKFASyE"
+                          alt="Zebra"
+                          className="w-auto h-auto max-w-full max-h-full object-contain"
+                        />
+                      </div>
                     </button>
                     {/* Hover Overlay */}
                     <div 

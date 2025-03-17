@@ -33,7 +33,8 @@ function ContactForm() {
     setSubmitStatus('idle');
 
     try {
-      const { error } = await supabase
+      // First, save to database
+      const { error: dbError } = await supabase
         .from('contact_submissions')
         .insert([
           {
@@ -45,7 +46,24 @@ function ContactForm() {
           }
         ]);
 
-      if (error) throw error;
+      if (dbError) throw dbError;
+
+      // Then, trigger email sending via Edge Function
+      const { error: emailError } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          to: 'business@jojo.ventures',
+          subject: `New Contact Form Submission from ${formData.fullName}`,
+          formData: {
+            fullName: formData.fullName,
+            email: formData.email,
+            role: formData.role,
+            interest: formData.interest,
+            message: formData.message
+          }
+        }
+      });
+
+      if (emailError) throw emailError;
 
       setSubmitStatus('success');
       setFormData({

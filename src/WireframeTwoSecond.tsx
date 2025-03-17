@@ -46,7 +46,7 @@ function WireframeTwoSecond() {
                   playsInline
                   className="absolute inset-0 w-full h-full object-cover"
                 >
-                  <source src="https://ugricruidisirwkjayzw.supabase.co/storage/v1/object/sign/JoJo%20Ventures%20-%20Website/Professional_Mode_The_giant_curtain_opens_up__reve.mp4?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJKb0pvIFZlbnR1cmVzIC0gV2Vic2l0ZS9Qcm9mZXNzaW9uYWxfTW9kZV9UaGVfZ2lhbnRfY3VydGFpbl9vcGVuc191cF9fcmV2ZS5tcDQiLCJpYXQiOjE3NDE3NDUwMjAsImV4cCI6MTc3MzI4MTAyMH0.mhoGbF5wkYaarx0zoltnQqsZz5350dEh-yyznYet9S8" type="video/mp4" />
+                  <source src="https://ugricruidisirwkjayzw.supabase.co/storage/v1/object/sign/JoJo%20Ventures%20-%20Website/Professional_Mode_The_giant_curtain_opens_up__reve-9.mp4?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJKb0pvIFZlbnR1cmVzIC0gV2Vic2l0ZS9Qcm9mZXNzaW9uYWxfTW9kZV9UaGVfZ2lhbnRfY3VydGFpbl9vcGVuc191cF9fcmV2ZS05Lm1wNCIsImlhdCI6MTc0MjE5NzM4MSwiZXhwIjoxNzczNzMzMzgxfQ.rgbPowlCQtf0sVF3WcpDkuDw0WuZrWGDKMYuJzlEDkU" type="video/mp4" />
                 </video>
               </div>
             )}

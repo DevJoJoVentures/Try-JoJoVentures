@@ -36,10 +36,10 @@ function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-black border-t border-white/10 py-8 px-4 mt-auto">
+    <footer className="w-full bg-black border-t border-white/10 py-6 md:py-8 px-4 mt-auto">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Logo and Copyright */}
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col md:flex-row items-center gap-4">
           <a 
             href="https://www.jojo.ventures" 
             target="_blank" 
@@ -52,13 +52,13 @@ function Footer() {
               className="h-8 w-auto"
             />
           </a>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-400 text-center md:text-left">
             © {new Date().getFullYear()} JoJo Ventures. All rights reserved.
           </p>
         </div>
 
         {/* Social Links */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 flex-wrap justify-center">
           {socialLinks.map((link) => (
             <a
               key={link.name}
@@ -66,7 +66,7 @@ function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={link.ariaLabel}
-              className="text-white/70 hover:text-white transition-colors duration-300 transform hover:scale-110"
+              className="text-white/70 hover:text-white transition-colors duration-300 transform hover:scale-110 min-w-[44px] min-h-[44px] flex items-center justify-center"
             >
               <link.icon size={24} strokeWidth={1.5} />
             </a>

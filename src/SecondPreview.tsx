@@ -24,16 +24,16 @@ function SecondPreview() {
         {/* Back Button */}
         <button
           onClick={() => handleNavigation('/')}
-          className="absolute top-6 left-6 text-white flex items-center gap-2 hover:text-[#ffdab8] transition-colors"
+          className="absolute top-6 left-6 text-white flex items-center gap-2 hover:text-[#ffdab8] transition-colors min-h-[44px] min-w-[44px]"
         >
           <ArrowLeft size={24} />
-          <span>Back</span>
+          <span className="hidden md:inline">Back</span>
         </button>
 
-        <main className="flex-1 flex items-center">
+        <main className="flex-1 flex flex-col md:flex-row items-center">
           {/* Left Side - Phone Preview */}
-          <div className="flex items-center justify-end p-8 pr-0 w-[45%]">
-            <div className="relative w-[400px] h-[800px] border-8 border-white rounded-[48px] overflow-hidden hover:border-[#ffdab8] transition-all duration-300">
+          <div className="w-full md:w-[45%] flex items-center justify-center md:justify-end p-4 md:p-8 md:pr-0">
+            <div className="relative w-full max-w-[280px] md:w-[400px] h-[560px] md:h-[800px] border-8 border-white rounded-[48px] overflow-hidden hover:border-[#ffdab8] transition-all duration-300">
               {/* Notch */}
               <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[150px] h-[30px] bg-gray-400/10 rounded-full z-10"></div>
               
@@ -57,8 +57,8 @@ function SecondPreview() {
           </div>
 
           {/* Right Side - Contact Form */}
-          <div className="flex flex-col items-center justify-center p-12 pl-8 w-[55%]">
-            <div className="w-full max-w-xl text-center">
+          <div className="w-full md:w-[55%] flex flex-col items-center md:items-start justify-center p-4 md:p-12 md:pl-8">
+            <div className="w-full max-w-xl text-center md:text-left">
               <a 
                 href="https://www.jojo.ventures" 
                 target="_blank" 
@@ -68,22 +68,22 @@ function SecondPreview() {
                 <img 
                   src="https://ugricruidisirwkjayzw.supabase.co/storage/v1/object/sign/JoJo%20Ventures%20-%20Website/png_trns_logo_3x%20(2).png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJKb0pvIFZlbnR1cmVzIC0gV2Vic2l0ZS9wbmdfdHJuc19sb2dvXzN4ICgyKS5wbmciLCJpYXQiOjE3NDE3NDM3NDEsImV4cCI6MTc3MzI3OTc0MX0.yTJQnLkppmvEDEzlc6KaHsFl-HkrGf4t4Z2-BvW3eds"
                   alt="JoJo Ventures Logo"
-                  className="h-32 w-auto mx-auto mb-8"
+                  className="h-24 md:h-32 w-auto mx-auto mb-8"
                 />
               </a>
-              <h2 className="text-[28px] font-bold text-white mb-8 whitespace-nowrap">
+              <h2 className="text-2xl md:text-[28px] font-bold text-white mb-8">
                 Step 2 - Choose Your Product To Be Displayed
               </h2>
               
               {/* Wireframe Selection Buttons */}
-              <div className="flex justify-center gap-6 mt-8">
-                <div className="flex flex-col items-center">
+              <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6 mt-4 md:mt-8">
+                <div className="flex flex-col items-center w-full md:w-auto">
                   <div 
-                    className="relative"
+                    className="relative w-full md:w-48"
                     onMouseEnter={() => setHoveredWireframe(0)}
                     onMouseLeave={() => setHoveredWireframe(null)}
                   >
-                    <button className="relative w-48 h-48 border-4 border-white rounded-lg overflow-hidden hover:border-[#ffdab8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:ring-offset-2 focus:ring-offset-black mb-4 bg-white">
+                    <button className="relative w-full md:w-48 h-48 border-4 border-white rounded-lg overflow-hidden hover:border-[#ffdab8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:ring-offset-2 focus:ring-offset-black mb-4 bg-white">
                       <div className="w-full h-full p-4 flex items-center justify-center">
                         <img 
                           src="https://ugricruidisirwkjayzw.supabase.co/storage/v1/object/sign/JoJo%20Ventures%20-%20Website/Jojoventuresshiba.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJKb0pvIFZlbnR1cmVzIC0gV2Vic2l0ZS9Kb2pvdmVudHVyZXNzaGliYS5qcGciLCJpYXQiOjE3NDE5MTkyMzcsImV4cCI6MTc3MzQ1NTIzN30.ksLgoyzG1Bvi7RfxVmWIcTkn3HL4iPGtoPpWbjJDPMI"
@@ -92,15 +92,14 @@ function SecondPreview() {
                         />
                       </div>
                     </button>
-                    {/* Hover Overlay */}
+                    {/* Hover/Touch Overlay */}
                     <div 
-                      className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300 z-20 rounded-lg ${
-                        hoveredWireframe === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                      }`}
+                      className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300 z-20 rounded-lg
+                        ${hoveredWireframe === 0 ? 'opacity-100' : 'opacity-0 md:pointer-events-none'}`}
                     >
                       <button
                         onClick={() => handleNavigation('/wireframe-one-second')}
-                        className="px-8 py-3 bg-white text-black rounded-full font-bold text-xl border-4 border-black
+                        className="min-h-[44px] px-6 md:px-8 py-3 bg-white text-black rounded-full font-bold text-lg md:text-xl border-4 border-black
                           flex items-center gap-2 transition-all duration-300
                           hover:bg-[#ffdab8] hover:text-black hover:border-black
                           focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:ring-offset-2 focus:ring-offset-black"
@@ -110,13 +109,13 @@ function SecondPreview() {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center w-full md:w-auto">
                   <div 
-                    className="relative"
+                    className="relative w-full md:w-48"
                     onMouseEnter={() => setHoveredWireframe(1)}
                     onMouseLeave={() => setHoveredWireframe(null)}
                   >
-                    <button className="relative w-48 h-48 border-4 border-white rounded-lg overflow-hidden hover:border-[#ffdab8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:ring-offset-2 focus:ring-offset-black mb-4 bg-white">
+                    <button className="relative w-full md:w-48 h-48 border-4 border-white rounded-lg overflow-hidden hover:border-[#ffdab8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:ring-offset-2 focus:ring-offset-black mb-4 bg-white">
                       <div className="w-full h-full p-4 flex items-center justify-center">
                         <img 
                           src="https://ugricruidisirwkjayzw.supabase.co/storage/v1/object/sign/JoJo%20Ventures%20-%20Website/jojoventureszebra.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJKb0pvIFZlbnR1cmVzIC0gV2Vic2l0ZS9qb2pvdmVudHVyZXN6ZWJyYS5qcGVnIiwiaWF0IjoxNzQyMTk3NjM3LCJleHAiOjE3NzM3MzM2Mzd9._IjP2EVpPODBjuRcN5OvM9r-D9Bx9ocKKtuWCKFASyE"
@@ -125,15 +124,14 @@ function SecondPreview() {
                         />
                       </div>
                     </button>
-                    {/* Hover Overlay */}
+                    {/* Hover/Touch Overlay */}
                     <div 
-                      className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300 z-20 rounded-lg ${
-                        hoveredWireframe === 1 ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                      }`}
+                      className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300 z-20 rounded-lg
+                        ${hoveredWireframe === 1 ? 'opacity-100' : 'opacity-0 md:pointer-events-none'}`}
                     >
                       <button
                         onClick={() => handleNavigation('/wireframe-two-second')}
-                        className="px-8 py-3 bg-white text-black rounded-full font-bold text-xl border-4 border-black
+                        className="min-h-[44px] px-6 md:px-8 py-3 bg-white text-black rounded-full font-bold text-lg md:text-xl border-4 border-black
                           flex items-center gap-2 transition-all duration-300
                           hover:bg-[#ffdab8] hover:text-black hover:border-black
                           focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:ring-offset-2 focus:ring-offset-black"

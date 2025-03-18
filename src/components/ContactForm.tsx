@@ -33,7 +33,6 @@ function ContactForm() {
     setSubmitStatus('idle');
 
     try {
-      // First, save to database
       const { error: dbError } = await supabase
         .from('contact_submissions')
         .insert([
@@ -48,7 +47,6 @@ function ContactForm() {
 
       if (dbError) throw dbError;
 
-      // Then, trigger email sending via Edge Function
       const { error: emailError } = await supabase.functions.invoke('send-contact-email', {
         body: {
           to: 'business@jojo.ventures',
@@ -90,11 +88,11 @@ function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md bg-white/10 backdrop-blur-lg rounded-xl p-8">
-      <div className="space-y-6">
+    <form onSubmit={handleSubmit} className="w-full max-w-md bg-white/10 backdrop-blur-lg rounded-xl p-4 md:p-8">
+      <div className="space-y-4 md:space-y-6">
         {/* Full Name */}
         <div className="text-left">
-          <label htmlFor="fullName" className="block text-caption font-medium text-white">
+          <label htmlFor="fullName" className="block text-sm font-medium text-white mb-1">
             Full Name
           </label>
           <input
@@ -104,14 +102,14 @@ function ContactForm() {
             value={formData.fullName}
             onChange={handleChange}
             required
-            className="mt-1 block w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-lg text-left text-base text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:border-transparent transition-all"
+            className="mt-1 block w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-lg text-left text-base text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:border-transparent transition-all min-h-[44px]"
             placeholder="Enter your full name"
           />
         </div>
 
         {/* Email */}
         <div className="text-left">
-          <label htmlFor="email" className="block text-caption font-medium text-white">
+          <label htmlFor="email" className="block text-sm font-medium text-white mb-1">
             Email Address
           </label>
           <input
@@ -121,14 +119,14 @@ function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="mt-1 block w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-lg text-left text-base text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:border-transparent transition-all"
+            className="mt-1 block w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-lg text-left text-base text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:border-transparent transition-all min-h-[44px]"
             placeholder="Enter your email"
           />
         </div>
 
         {/* Role */}
         <div className="text-left">
-          <label htmlFor="role" className="block text-caption font-medium text-white">
+          <label htmlFor="role" className="block text-sm font-medium text-white mb-1">
             Your Role
           </label>
           <select
@@ -137,7 +135,7 @@ function ContactForm() {
             value={formData.role}
             onChange={handleChange}
             required
-            className="mt-1 block w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-lg text-left text-base text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:border-transparent transition-all"
+            className="mt-1 block w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-lg text-left text-base text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:border-transparent transition-all min-h-[44px] appearance-none"
           >
             <option value="">Select your role</option>
             <option value="marketing_c_suite">Marketing Professional - C Suite</option>
@@ -152,7 +150,7 @@ function ContactForm() {
 
         {/* Interest */}
         <div className="text-left">
-          <label htmlFor="interest" className="block text-caption font-medium text-white">
+          <label htmlFor="interest" className="block text-sm font-medium text-white mb-1">
             Area of Interest
           </label>
           <select
@@ -161,7 +159,7 @@ function ContactForm() {
             value={formData.interest}
             onChange={handleChange}
             required
-            className="mt-1 block w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-lg text-left text-base text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:border-transparent transition-all"
+            className="mt-1 block w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-lg text-left text-base text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:border-transparent transition-all min-h-[44px] appearance-none"
           >
             <option value="">Select your interest</option>
             <option value="social_media">Social Media Advertising</option>
@@ -175,7 +173,7 @@ function ContactForm() {
 
         {/* Message */}
         <div className="text-left">
-          <label htmlFor="message" className="block text-caption font-medium text-white">
+          <label htmlFor="message" className="block text-sm font-medium text-white mb-1">
             Message (Optional)
           </label>
           <textarea
@@ -184,7 +182,7 @@ function ContactForm() {
             value={formData.message}
             onChange={handleChange}
             rows={4}
-            className="mt-1 block w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-lg text-left text-base text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:border-transparent transition-all resize-none"
+            className="mt-1 block w-full px-4 py-3 bg-white/5 border border-gray-600 rounded-lg text-left text-base text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:border-transparent transition-all resize-none min-h-[120px]"
             placeholder="Tell us about your project or requirements"
           />
         </div>
@@ -193,7 +191,7 @@ function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full px-8 py-3 bg-white text-black rounded-full font-bold text-base border-4 border-black
+          className="w-full min-h-[44px] px-6 md:px-8 py-3 bg-white text-black rounded-full font-bold text-base border-4 border-black
             flex items-center justify-center gap-2 transition-all duration-300
             hover:bg-[#ffdab8] hover:text-black hover:border-black
             focus:outline-none focus:ring-2 focus:ring-[#ffdab8] focus:ring-offset-2 focus:ring-offset-black
@@ -204,12 +202,12 @@ function ContactForm() {
 
         {/* Status Messages */}
         {submitStatus === 'success' && (
-          <p className="text-green-400 text-caption text-left mt-4">
+          <p className="text-green-400 text-sm text-center md:text-left mt-4">
             Thank you! Your message has been sent successfully.
           </p>
         )}
         {submitStatus === 'error' && (
-          <p className="text-red-400 text-caption text-left mt-4">
+          <p className="text-red-400 text-sm text-center md:text-left mt-4">
             There was an error sending your message. Please try again.
           </p>
         )}
